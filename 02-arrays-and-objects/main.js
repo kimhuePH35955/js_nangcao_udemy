@@ -39,7 +39,7 @@
     arr.push(100);
     console.log(arr);
 
-    // pop(): cắt bỏ giá trị cuối cùng của mảng
+    // pop(): cắt bỏ giá trị cuối cùng của mảng và trả về mảng chứa các phần tử còn lại
     arr.pop();
     console.log(arr);
 
@@ -104,7 +104,7 @@
     console.log(...x);
     console.log(x);
 
-    // flat(): giải nén các mảng con trong mảng cha thành các phần tử của mảng cha
+    // flat(): giải nén các phần tử của mảng con trong mảng cha thành các phần tử của mảng cha
     const arr = [1, 2, [3, 4, 5,], 6, [7, 8]];
     x = arr.flat();
     console.log(x);

@@ -1,12 +1,10 @@
 //----------------------------- SECTION 9------------------------------------
 // ----------------------VIDEO 103: CẤU TRÚC MẢNG   ------------------------
 {
-
     const array = [2, 3, 4];
     const a = array[0];
     const b = array[1];
     const c = array[2];
-
     const [x, y, z] = array;
     console.log(x, y, z);
     console.log(array);
@@ -195,7 +193,10 @@
         location: ' 235 Di Trach, Hoai Duc',
         categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
         startMenu: ['Focacia', 'Bruschetta', 'Garlic', 'Bread', 'Capress Salad'],
-        mainMenu: ['Pizza', 'Pasta', 'Risotto']
+        mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+        orderPaste: function (ing1, ing2, ing3) {
+            console.log(`Here is your declicious pasta with ${ing1}, ${ing2},${ing3}`);
+        }
     };
     const newMenu = [...restaurant.mainMenu, 'Mi hao hao', 'Gnocci'];
     //=> mảng newMenu sẽ chứa mainMeu trong object restaurant
@@ -211,8 +212,114 @@
     // Iterables: arrays, strings, maps, sets => NOT OBject
     const str = 'Jonas';
     const letters = [...str, '', 'S.'];
-    console.log(letters);
+    console.log(letters);  // letters = j, o , h , n , , s.
 
+    // array
+    // const ingredients = [
+    //     prompt("Let's make pasta ! Ingredient 1?"),
+    //     prompt("Ingredient 2?"),
+    //     prompt("Ingregdient 3"),
+    // ]
+    // console.log(ingredients);
+
+    // // orderPasta
+    // restaurant.orderPaste(ingredients[0], ingredients[1], ingredients[2]);
+    // restaurant.orderPaste(...ingredients);
+
+    // object
+    const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+    console.log(newRestaurant);
+
+    // copy object
+    const restaurantCopy = { ...restaurant };
+    restaurantCopy.name = "Pham Kim Hue";
+    console.log(restaurantCopy.name);
+    console.log(restaurant.name);
+
+}
+
+//----------------------------------- VIDEO 107: --------------------------------------
+{
+    // ... toán tử Spread 
+    const arr = [1, 2, ...[3, 4]];
+    console.log(...arr);
+
+    const restaurant = {
+        name: 'Kim Hue',
+        location: ' 235 Di Trach, Hoai Duc',
+        categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+        startMenu: ['Focacia', 'Bruschetta', 'Garlic', 'Bread', 'Capress Salad'],
+        mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+        order: function (starterIndex, mainIndex) {
+            return [this.startMenu[starterIndex], this.mainMenu[mainIndex]];
+        },
+        openingHours: {
+            thu: {
+                open: 12,
+                close: 22,
+            },
+            fri: {
+                open: 11,
+                close: 23,
+            },
+            sat: {
+                open: 0,
+                close: 24,
+            },
+        }
+
+    };
+
+    // toán tử gán
+    const [a, b, ...others] = [1, 2, 3, 4, 5];
+    console.log(a, b, others);
+
+    // sử dụng ... 
+    const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.startMenu];
+    console.log(pizza, risotto, otherFood);
+
+    // object
+    const { sat, ...weekdays } = restaurant.openingHours;
+    console.log(weekdays);
+
+
+    // funtions
+    const add = function (...numbers) {  // ...numbers có thể nhận nhiều giá trị ko cần chỉ định trước
+        console.log(...numbers);
+        let sum = 0;
+        for (let i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+        console.log(sum);
+
+    };
+    add(2, 3);
+    add(5, 6, 7, 2);
+    add(8, 2, 5, 4, 4, 5, 3, 2);
+
+    // có thể truyền vào function 1 toán tử spread
+    // ví dụ: 
+    const x = [23, 5, 7];
+    add(...x);
+
+    // restaurant.orderPizza('mushrooms', 'orion', 'olives', 'spinach');
+    // restaurant.orderPizza('mushrooms');
+
+}
+// ------------------------------ VIDEO 108: SHORT Circuiting (&& and II)-----------------------
+{
+
+    // có thể sử dụng bất kì kiểu dữ liệu nào
+    // toán tử OR
+    // nó sẽ trả về 1 giá trị ko phải boolean . nó sẽ trả về giá trị trung thực đầu tiên đc phát hiện
+    // các giá trị sau sẽ ko ddc quan tâm.
+    console.log(3 || 'Kim Hue');
+    // ví dụ sau: 
+    console.log('' || 'Kim Hue');
+    console.log(true || 0);
+    console.log(undefined || null);
+    console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+    
 }
 
 
